@@ -22,6 +22,7 @@ import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,6 +40,7 @@ import androidx.compose.material3.NavigationDrawer
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.OutlinedButton
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SmallFloatingActionButton
 import androidx.compose.material3.SmallTopAppBar
@@ -87,16 +89,15 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                     ) {
+                        val appBarTitle = "m3 1.0.0-alpha02(Top app bar)"
                         Scaffold(
                             topBar = {
                                 when(selectedItem){
-                                    0-> SmallTopAppBar(title = { Text("m3 1.0.0-alpha01(Top app bar)") })
-                                    1-> CenterAlignedTopAppBar(title = { Text("m3 1.0.0-alpha01(Top app bar)") })
-                                    2-> MediumTopAppBar(title = { Text("m3 1.0.0-alpha01(Top app bar)") })
-                                    3-> LargeTopAppBar(title = { Text("m3 1.0.0-alpha01(Top app bar)") })
+                                    0-> SmallTopAppBar(title = { Text(appBarTitle) })
+                                    1-> CenterAlignedTopAppBar(title = { Text(appBarTitle) })
+                                    2-> MediumTopAppBar(title = { Text(appBarTitle) })
+                                    3-> LargeTopAppBar(title = { Text(appBarTitle) })
                                 }
-
-
                             },
                             bottomBar = {
                                 NavigationBar {
@@ -144,9 +145,6 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
                             },
-                            drawerContent = {
-                                Text("Drawer Content")
-                            }
                         ) {
                             Row(){
                                 var selectedRailItem by remember { mutableIntStateOf(0) }
@@ -168,6 +166,47 @@ class MainActivity : ComponentActivity() {
                                     verticalArrangement = Arrangement.spacedBy(12.dp),
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
+                                    item{
+                                        var checked by remember{
+                                            mutableStateOf(false)
+                                        }
+                                        Checkbox(
+                                            checked = checked,
+                                            onCheckedChange = {
+                                                checked = it
+                                            }
+                                        )
+                                    }
+                                    item{
+                                        var selected by remember{
+                                            mutableStateOf(0)
+                                        }
+                                        Row(
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            RadioButton(
+                                                selected = selected == 0,
+                                                onClick = {
+                                                    selected = 0
+                                                }
+                                            )
+                                            Text("Male")
+                                            RadioButton(
+                                                selected = selected == 1,
+                                                onClick = {
+                                                    selected = 1
+                                                }
+                                            )
+                                            Text("Female")
+                                            RadioButton(
+                                                selected = selected == 2,
+                                                onClick = {
+                                                    selected = 2
+                                                }
+                                            )
+                                            Text("Other")
+                                        }
+                                    }
                                     item{
                                         Button(
                                             onClick = {
