@@ -5,6 +5,7 @@ import android.widget.CheckBox
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -23,6 +24,8 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.Button
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.Checkbox
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -32,6 +35,7 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LargeFloatingActionButton
 import androidx.compose.material3.LargeTopAppBar
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.NavigationBar
@@ -89,7 +93,7 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                     ) {
-                        val appBarTitle = "m3 1.0.0-alpha03(Top app bar)"
+                        val appBarTitle = "m3 1.0.0-alpha04(Top app bar)"
                         Scaffold(
                             topBar = {
                                 when(selectedItem){
@@ -164,8 +168,27 @@ class MainActivity : ComponentActivity() {
                                     modifier = Modifier
                                         .fillMaxSize(),
                                     verticalArrangement = Arrangement.spacedBy(12.dp),
-                                    horizontalAlignment = Alignment.CenterHorizontally
+                                    horizontalAlignment = Alignment.CenterHorizontally,
+                                    contentPadding = PaddingValues(bottom = 100.dp)
                                 ) {
+                                    item{
+                                        Text("@NonRestartableComposable")
+                                    }
+                                    item{
+                                        Divider()
+                                    }
+                                    item{
+                                        LinearProgressIndicator()
+                                    }
+                                    item{
+                                        LinearProgressIndicator(progress = 0.5f)
+                                    }
+                                    item{
+                                        CircularProgressIndicator()
+                                    }
+                                    item{
+                                        CircularProgressIndicator(progress = 0.7f)
+                                    }
                                     item{
                                         Text("No new feature in 1.0.0-alpha03")
                                     }
