@@ -89,7 +89,7 @@ class MainActivity : ComponentActivity() {
                             }
                         },
                     ) {
-                        val appBarTitle = "m3 1.0.0-alpha02(Top app bar)"
+                        val appBarTitle = "m3 1.0.0-alpha03(Top app bar)"
                         Scaffold(
                             topBar = {
                                 when(selectedItem){
@@ -166,6 +166,9 @@ class MainActivity : ComponentActivity() {
                                     verticalArrangement = Arrangement.spacedBy(12.dp),
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
+                                    item{
+                                        Text("No new feature in 1.0.0-alpha03")
+                                    }
                                     item{
                                         var checked by remember{
                                             mutableStateOf(false)
