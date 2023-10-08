@@ -1,6 +1,7 @@
 package com.debduttapanda.material3explore
 
 import android.os.Bundle
+import android.widget.CheckBox
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -73,6 +74,7 @@ class MainActivity : ComponentActivity() {
                     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
                     val scope = rememberCoroutineScope()
                     var selectedItem by remember { mutableIntStateOf(0) }
+
                     NavigationDrawer(
                         drawerState = drawerState,
                         drawerContent = {
@@ -141,6 +143,9 @@ class MainActivity : ComponentActivity() {
                                         onClick = { selectedItem = 3 }
                                     )
                                 }
+                            },
+                            drawerContent = {
+                                Text("Drawer Content")
                             }
                         ) {
                             Row(){
@@ -280,6 +285,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     }
+
                 }
             }
         }
